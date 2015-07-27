@@ -29,6 +29,7 @@ path=("$HOME/bin" $path)
 
 # Default editor
 export EDITOR=$(which vim)
+export VISUAL=$EDITOR
 
 # Add cabal to path
 path=("$HOME/.cabal/bin" $path)
