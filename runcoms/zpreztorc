@@ -44,8 +44,8 @@ zstyle ':prezto:load' pmodule \
   'ssh' \
   'syntax-highlighting' \
   'prompt' \
-  'history-substring-search' \  # depends on: syntax-highlighting-module
-  'autosuggestions'             # depends on: history-substring-search syntax-highlighting
+  'history-substring-search' \
+  'autosuggestions'
 
 #
 # Autosuggestions

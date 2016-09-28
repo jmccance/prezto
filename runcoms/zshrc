@@ -12,4 +12,21 @@ fi
 
 # Customize to your needs...
 
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+# Conscript
+export CONSCRIPT_HOME="$HOME/.conscript"
+export CONSCRIPT_OPTS="-XX:MaxPermSize=512M -Dfile.encoding=UTF-8"
+
+# General path setup
+path=(
+  "$HOME/bin" 
+  "$HOME/.cabal/bin" 
+  "$HOME/.local/bin"  
+  "$HOME/.rvm/bin"
+  "$CONSCRIPT_HOME/bin"
+  $path
+)
+
+# "What was that alias again?"
+function agrep {
+  alias | grep $*
+}
