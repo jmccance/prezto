@@ -23,10 +23,20 @@ path=(
   "$HOME/.local/bin"  
   "$HOME/.rvm/bin"
   "$CONSCRIPT_HOME/bin"
+  "$HOME/Library/Python/2.7/bin"
   $path
 )
+
+export EDITOR=vim
 
 # "What was that alias again?"
 function agrep {
   alias | grep $*
 }
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+alias imgcat=~/.iterm2/imgcat
+
