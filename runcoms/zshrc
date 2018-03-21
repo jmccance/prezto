@@ -55,3 +55,7 @@ alias pbprintf='printf "$(pbp)"'
 if alias rm >&-; then
   unalias rm
 fi
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="/Users/joel/.sdkman"
+[[ -s "/Users/joel/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/joel/.sdkman/bin/sdkman-init.sh"
