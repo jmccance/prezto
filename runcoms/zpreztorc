@@ -136,6 +136,10 @@ zstyle ':prezto:module:history-substring-search' globbing-flags ''
 # Set the prompt theme to load.
 # Setting it to 'random' loads a random theme.
 # Auto set to 'off' on dumb terminals.
+POWERLEVEL9K_LEFT_SEGMENT_SEPARATOR=$'\ue0b4'
+POWERLEVEL9K_LEFT_SUBSEGMENT_SEPARATOR=$'\ue0b4'
+POWERLEVEL9K_RIGHT_SEGMENT_SEPARATOR=$'\ue0b6'
+POWERLEVEL9K_RIGHT_SUBSEGMENT_SEPARATOR=$'\ue0b7'
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir vcs newline status)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(root_indicator background_jobs)
 POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
