@@ -18,6 +18,7 @@ export CONSCRIPT_OPTS="-XX:MaxPermSize=512M -Dfile.encoding=UTF-8"
 
 # General path setup
 path=(
+  "/usr/local/bin"
   "$HOME/bin" 
   "$HOME/.cabal/bin" 
   "$HOME/.local/bin"  
@@ -43,6 +44,16 @@ export NVM_DIR="$HOME/.nvm"
 if [ -f "$(which powerline-daemon)" ]; then
   powerline-daemon -q
   source "$HOME/Library/Python/2.7/lib/python/site-packages/powerline/bindings/zsh/powerline.zsh"
+fi
+
+# If `hub` is installed, alias it
+if [ -f "$(which hub)" ]; then
+  eval "$(hub alias -s)"
+fi
+
+# If gpg is installed, set up the GPG_TTY variable
+if [ -f "$(which gpg)" ]; then
+  export GPG_TTY=/dev/ttys006
 fi
 
 ## Aliases
