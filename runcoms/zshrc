@@ -51,11 +51,6 @@ if [ -f "$(which hub)" ]; then
   eval "$(hub alias -s)"
 fi
 
-# If gpg is installed, set up the GPG_TTY variable
-if [ -f "$(which gpg)" ]; then
-  export GPG_TTY=/dev/ttys006
-fi
-
 ## Aliases
 
 # Print whatever's in the pasteboard expanding escape codes.
@@ -67,12 +62,16 @@ if alias rm >&-; then
   unalias rm
 fi
 
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-if [ -e "$HOME/.sdkman" ]; then
-  export SDKMAN_DIR="$HOME/.sdkman"
-  [[ -s "$SDKMAN_DIR/bin/sdkman-init.sh" ]] && source "$SDKMAN_DIR/bin/sdkman-init.sh"
+# sdkman
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+
+# virtualenv
+if [ -e $(which virtualenv) ]; then
+  source "$HOME/Library/Python/2.7/bin/virtualenvwrapper.sh"
 fi
 
+# Local overrides
 if [ -e ~/.zlocal ]; then
   source ~/.zlocal
 fi
