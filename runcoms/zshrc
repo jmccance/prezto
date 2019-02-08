@@ -62,16 +62,23 @@ if alias rm >&-; then
   unalias rm
 fi
 
-# sdkman
+# Always run `find` with real regex support
+# Maintain the "ignore globs" functionality, which I think makes writing searches easier.
+alias find="noglob find -E"
+
+## sdkman
+
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 
-# virtualenv
+## virtualenv
+
 if [ -e $(which virtualenv) ]; then
   source "$HOME/Library/Python/2.7/bin/virtualenvwrapper.sh"
 fi
 
-# Local overrides
+## Local overrides
+
 if [ -e ~/.zlocal ]; then
   source ~/.zlocal
 fi
