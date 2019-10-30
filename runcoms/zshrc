@@ -12,6 +12,12 @@ fi
 
 # Customize to your needs...
 
+## Local overrides
+
+if [ -e ~/.zlocal ]; then
+  source ~/.zlocal
+fi
+
 # Conscript
 export CONSCRIPT_HOME="$HOME/.conscript"
 export CONSCRIPT_OPTS="-XX:MaxPermSize=512M -Dfile.encoding=UTF-8"
@@ -24,7 +30,7 @@ path=(
   "$HOME/.local/bin"  
   "$HOME/.rvm/bin"
   "$CONSCRIPT_HOME/bin"
-  "$HOME/Library/Python/2.7/bin"
+  "$PYTHON_HOME/bin"
   $path
 )
 
@@ -43,7 +49,7 @@ export NVM_DIR="$HOME/.nvm"
 # Powerline
 if [ -f "$(which powerline-daemon)" ]; then
   powerline-daemon -q
-  source "$HOME/Library/Python/2.7/lib/python/site-packages/powerline/bindings/zsh/powerline.zsh"
+  source "$PYTHON_HOME/lib/python/site-packages/powerline/bindings/zsh/powerline.zsh"
 fi
 
 # If `hub` is installed, alias it
@@ -73,12 +79,6 @@ export SDKMAN_DIR="$HOME/.sdkman"
 
 ## virtualenv
 
-if [ -e $(which virtualenv) ]; then
-  source "$HOME/Library/Python/2.7/bin/virtualenvwrapper.sh"
-fi
-
-## Local overrides
-
-if [ -e ~/.zlocal ]; then
-  source ~/.zlocal
+if [ -e "$(which virtualenv)" ]; then
+  source "$PYTHON_HOME/bin/virtualenvwrapper.sh"
 fi
