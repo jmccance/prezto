@@ -63,6 +63,8 @@ fi
 # Useful for making stack traces from JSON-encoded logs readable.
 alias pbprintf='printf "$(pbp)"'
 
+alias jqcat="jq -Rr --unbuffered 'fromjson? // .'"
+
 # I don't like the prezto super-safe rm
 if alias rm >&-; then
   unalias rm
@@ -81,4 +83,19 @@ export SDKMAN_DIR="$HOME/.sdkman"
 
 if [ -e "$(which virtualenv)" ]; then
   source "$PYTHON_HOME/bin/virtualenvwrapper.sh"
+fi
+
+## direnv
+
+if [ -e "$(which direnv)" ]; then
+  eval "$(direnv hook zsh)"
+fi
+
+## brew completions
+
+if type brew &>/dev/null; then
+  FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
+
+  autoload -Uz compinit
+  compinit
 fi
