@@ -105,3 +105,9 @@ fi
 if [ -e "$(which rbenv)" ]; then
   eval "$(rbenv init -)"
 fi
+
+## nodenv
+
+if [ -e "$(which nodenv)" ]; then
+  eval "$(nodenv init -)"
+fi
