@@ -31,14 +31,21 @@ path=(
   "$HOME/.rvm/bin"
   "$CONSCRIPT_HOME/bin"
   "$PYTHON_HOME/bin"
+  "${GOPATH:-$HOME/go}/bin"
   $path
 )
 
-export EDITOR=vim
+if [ -f "$(which nvim)" ]; then
+  export EDITOR=nvim
+  alias vim=nvim
+else
+  export EDITOR=vim
+fi
 
 # iTerm2
 if [ -e ~/.iterm2_shell_integration.zsh ]; then
   source ~/.iterm2_shell_integration.zsh
+  path=("$HOME/.iterm2" $path)
 fi
 
 # nvm
@@ -94,10 +101,19 @@ fi
 ## brew completions
 
 if type brew &>/dev/null; then
-  FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
+  fpath=(
+    "$(brew --prefix)/share/zsh/site-functions"
+    "$HOME/.local/share/zsh/functions"
+    $fpath
+  )
 
   autoload -Uz compinit
   compinit
+
+  autoload bashcompinit
+  bashcompinit
+
+  source $(brew --prefix)/etc/bash_completion.d/az
 fi
 
 ## rbenv
