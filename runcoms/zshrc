@@ -81,6 +81,12 @@ fi
 # Maintain the "ignore globs" functionality, which I think makes writing searches easier.
 alias find="noglob find -E"
 
+## asdf
+
+if [ -e "/usr/local/opt/asdf/asdf.sh" ]; then
+  . /usr/local/opt/asdf/asdf.sh
+fi
+
 ## sdkman
 
 export SDKMAN_DIR="$HOME/.sdkman"
@@ -96,6 +102,18 @@ fi
 
 if [ -e "$(which direnv)" ]; then
   eval "$(direnv hook zsh)"
+fi
+
+## rbenv
+
+if [ -e "$(which rbenv)" ]; then
+  eval "$(rbenv init -)"
+fi
+
+## nodenv
+
+if [ -e "$(which nodenv)" ]; then
+  eval "$(nodenv init -)"
 fi
 
 ## brew completions
@@ -114,16 +132,4 @@ if type brew &>/dev/null; then
   bashcompinit
 
   source $(brew --prefix)/etc/bash_completion.d/az
-fi
-
-## rbenv
-
-if [ -e "$(which rbenv)" ]; then
-  eval "$(rbenv init -)"
-fi
-
-## nodenv
-
-if [ -e "$(which nodenv)" ]; then
-  eval "$(nodenv init -)"
 fi
