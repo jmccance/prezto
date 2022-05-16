@@ -35,6 +35,13 @@ path=(
   $path
 )
 
+if [ -f "$(which cs)" ]; then
+  path=(
+    "$HOME/Library/Application Support/Coursier/bin"
+    $path
+  )
+fi
+
 if [ -f "$(which nvim)" ]; then
   export EDITOR=nvim
   alias vim=nvim
@@ -83,7 +90,10 @@ alias find="noglob find -E"
 
 ## asdf
 
-if [ -e "/usr/local/opt/asdf/asdf.sh" ]; then
+
+if [ -e "/usr/local/opt/asdf/libexec/asdf.sh" ]; then
+  . /usr/local/opt/asdf/libexec/asdf.sh
+elif [ -e "/usr/local/opt/asdf/asdf.sh" ]; then
   . /usr/local/opt/asdf/asdf.sh
 fi
 
@@ -104,6 +114,12 @@ if [ -e "$(which direnv)" ]; then
   eval "$(direnv hook zsh)"
 fi
 
+## fzf
+
+if [ -f ~/.fzf.zsh ]; then
+  source ~/.fzf.zsh
+fi
+
 ## rbenv
 
 if [ -e "$(which rbenv)" ]; then
@@ -114,6 +130,12 @@ fi
 
 if [ -e "$(which nodenv)" ]; then
   eval "$(nodenv init -)"
+fi
+
+## graphite.dev completions
+
+if [ -e "$(which gt)" ]; then
+  eval "$(gt completion -)"
 fi
 
 ## brew completions
@@ -130,6 +152,4 @@ if type brew &>/dev/null; then
 
   autoload bashcompinit
   bashcompinit
-
-  source $(brew --prefix)/etc/bash_completion.d/az
 fi
