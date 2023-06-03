@@ -49,6 +49,11 @@ else
   export EDITOR=vim
 fi
 
+# 1Password
+if [ -e ~/.config/op/plugins.sh ]; then
+  source ~/.config/op/plugins.sh
+fi
+
 # iTerm2
 if [ -e ~/.iterm2_shell_integration.zsh ]; then
   source ~/.iterm2_shell_integration.zsh
@@ -95,6 +100,8 @@ if [ -e "/usr/local/opt/asdf/libexec/asdf.sh" ]; then
   . /usr/local/opt/asdf/libexec/asdf.sh
 elif [ -e "/usr/local/opt/asdf/asdf.sh" ]; then
   . /usr/local/opt/asdf/asdf.sh
+elif [ -e "/opt/homebrew/opt/asdf/libexec/asdf.sh" ]; then
+  . /opt/homebrew/opt/asdf/libexec/asdf.sh
 fi
 
 ## sdkman
