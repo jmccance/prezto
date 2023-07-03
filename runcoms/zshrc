@@ -147,6 +147,12 @@ if [ -e "$(which gt)" ]; then
   eval "$(gt completion -)"
 fi
 
+## rtx
+
+if [ -e "$(which rtx)" ]; then
+  eval "$(rtx activate zsh)"
+fi
+
 ## brew completions
 
 if type brew &>/dev/null; then
