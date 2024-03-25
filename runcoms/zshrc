@@ -60,6 +60,11 @@ if [ -e ~/.iterm2_shell_integration.zsh ]; then
   path=("$HOME/.iterm2" $path)
 fi
 
+# mise
+if [ -f "$(which mise)" ]; then
+  eval "$(mise activate)"
+fi
+
 # nvm
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -133,6 +138,12 @@ fi
 
 if [ -e "$(which rbenv)" ]; then
   eval "$(rbenv init -)"
+fi
+
+## starship
+
+if [ -e "$(which starship)" ]; then
+  eval "$(starship init zsh)"
 fi
 
 ## nodenv
